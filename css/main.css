@@ -62,6 +62,33 @@ body {
 	position: relative;
 }
 
+.drop-zone img {
+	position: absolute; 
+	width: 90% !important;
+	float: none;
+	top: 0;
+	left: 0;
+}
+
+.tl img {
+	right: 0;
+	bottom: 0;
+}
+
+.tr img {
+	left: 0;
+	bottom: 0;
+}
+
+.bl img {
+	right: 0;
+	top: 0;
+}
+
+.br img {
+	left: 0;
+	top: 0;
+}
 
 header {
 	position: relative;
