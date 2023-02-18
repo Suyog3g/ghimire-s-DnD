@@ -40,12 +40,16 @@ function handleDragOver(e) {
 	e.preventDefault();
 	console.log('dragging over me');}
 
-function handleDrop(e) {
-	e.preventDefault();
-	console.log('dropped on me!');
-	e.target.appendChild(draggedPiece);
-}
-
+	function handleDrop(e) { 
+		e.preventDefault();
+		// Only allow one piece to be dropped in a zone at a time
+		if (this.children.length > 0) {
+			console.log("Already a piece here");
+			return;
+		}
+		this.appendChild(draggedPiece);
+	}
+	
 
 
 //  process a collection of the elements and add an event handler to each
