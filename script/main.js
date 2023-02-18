@@ -29,7 +29,7 @@ function changeBgImage() {
 	let newBGPath = "images/backGround" + this.id + ".jpg";
 	// // debugger;
 	//  change the background image in the drop zone
-	puzzleBoard.style.backgroundImage = `url(images/backGround${this})`;
+	puzzleBoard.style.backgroundImage = `url(${newBGPath})`;
 }
 
 function handleStartDrag() { 
@@ -49,6 +49,32 @@ function handleDragOver(e) {
 		}
 		this.appendChild(draggedPiece);
 	}
+
+	
+function newPuzzle() {
+    // Remove all children from the drop zones and move them back to the puzzle piece section
+    dropZones.forEach(zone => {
+      while (zone.children.length > 0) {
+        puzzleBoard.appendChild(zone.children[0]);
+      }
+    });
+
+
+	const selectedButton = document.querySelector('.selected');
+    if (selectedButton) {
+        puzzleBoard.style.backgroundImage = `url(images/backGround${this})`;
+    }
+
+    const puzzlePieceContainer = document.querySelector('.puzzle-pieces');
+  puzzlePieceContainer.innerHTML = '';
+  puzzlePieces.forEach(piece => {
+    puzzlePieceContainer.appendChild(piece);
+  });
+
+  shufflePieces();
+
+  }
+
 	
 
 
@@ -69,3 +95,7 @@ function blockDefaultBehaviour(e) {
 
 // temp handling
 tempLink.addEventListener('click', blockDefaultBehaviour);
+
+
+const buttonHolder = document.querySelector('#buttonHolder');
+buttonHolder.addEventListener('click', newPuzzle);
